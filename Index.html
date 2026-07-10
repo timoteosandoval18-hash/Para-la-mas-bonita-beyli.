@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buenos días, princesa 💞</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background-color: #fff0f5;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Fondo de corazones animados */
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            animation: float 6s ease-in infinite;
+            opacity: 0;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border-radius: 30px;
+            padding: 30px 25px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 8px 32px rgba(255, 182, 193, 0.5);
+            text-align: center;
+            z-index: 1;
+            border: 2px solid #ffb6c1;
+        }
+
+        .vaquita {
+            width: 220px;
+            height: auto;
+            margin-bottom: 20px;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            color: #d63384;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #5a5a5a;
+            margin-bottom: 15px;
+        }
+
+        .highlight {
+            color: #e91e63;
+            font-weight: 600;
+        }
+
+        @media (max-width: 480px) {
+            .container { padding: 20px 15px; }
+            h1 { font-size: 1.5rem; }
+            p { font-size: 1rem; }
+            .vaquita { width: 180px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts" id="hearts"></div>
+    
+    <div class="container">
+        <img src="vaquita.png" alt="Vaquita tierna con lirios" class="vaquita">
+        
+        <h1>Buenos días 🌻</h1>
+        
+        <p class="highlight">¿Cómo amaneció la princesa más linda de todas? 💞</p>
+        
+        <p>
+            Solo quería recordarte que eres una niña hermosa, bella, preciosa, guapa, 
+            incomparable, maravillosa, tierna. 🩷
+        </p>
+        
+        <p>
+            Las estrellas tienen un brillo muy hermoso pero ese brillo no se compara 
+            con el brillo de tus ojitos lindos. 🫶🏻
+        </p>
+        
+        <p>
+            Amo el color café de tus lindos ojitos. Para mí son los más hermosos y únicos 
+            en todo el universo. Existen cientos de colores pero el café de tus ojos es mi favorito. 💗
+        </p>
+    </div>
+
+    <script>
+        // Generar corazones flotantes
+        const heartsContainer = document.getElementById('hearts');
+        const heartEmojis = ['💗', '💖', '💞', '💕', '🩷', '🤍'];
+        
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 3 + 's';
+            heart.style.fontSize = Math.random() * 15 + 10 + 'px';
+            heartsContainer.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+        
+        setInterval(createHeart, 300);
+    </script>
+</body>
+  </html>
